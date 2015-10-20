@@ -7,12 +7,14 @@ $password=mysqli_real_escape_string($con,$_POST['password']);
 $mobile=mysqli_real_escape_string($con,$_POST['mobile']);
 $reg_no=mysqli_real_escape_string($con,$_POST['reg_no']);
 $mob="/^[789][0-9]{9}$/";
+//checking if username has valid characters
 if (!preg_match("/^[a-zA-Z ]*$/",$username)) {
   $send=array(
   	"status"=>"105");
   echo json_encode($send);
   die();
 }
+//email validation
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $send=array(
   	"status"=>"103");
@@ -26,9 +28,11 @@ if(!preg_match($mob, $mobile))
   echo json_encode($send);
         die();
 }   
+//check if username already exists
 $check=username_check($con,$username);
 if($check==1)
 {
+	//insert if username does not exist
 	insert_entries($con,$username,$email,$password,$mobile,$reg_no);
 }
 else
