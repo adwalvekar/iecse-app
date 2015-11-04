@@ -7,3 +7,4 @@
 <br>000			Some error occured, try again.
 <br>222			Login successful
 <br>200			Invalid Username/Password
+<br>504     Could not connect to database
