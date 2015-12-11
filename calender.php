@@ -16,7 +16,7 @@ class calender{
 		$a[0]=array('status'=>'611')
 		$i=1;
 		while($q1_arr=mysqli_fetch_assoc($r1)){
-			$a[$i]=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description']);
+			$a[$i]=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
 			$i++;
 		}
 		echo json_encode($a , JSON_FORCE_OBJECT);
