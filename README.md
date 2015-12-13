@@ -8,6 +8,7 @@
 <br>222			Login successful
 <br>200			Invalid Username/Password
 <br>504     	Could not connect to database
+<br>602			No POST Recieved
 <br>604			Could not Find Events
 <br>611			Successful find events
 
