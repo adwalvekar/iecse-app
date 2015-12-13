@@ -12,7 +12,7 @@
 <br>604			Could not Find Events
 <br>611			Successful find events
 
-<br><h2>Calender</h2>
+<br><h2>Calendar</h2>
 <br> The app will respond in this format:
 <br>json containig status code at array location 0 and events at subsequent details.
 <br>event format:name,date,location,description,imgURL.
