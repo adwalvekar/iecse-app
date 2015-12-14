@@ -1,22 +1,24 @@
 <?php 
+include_once('dbaccess.php');
+
 class calendar{
-	public $db, $dbaccess;
+	public $conn, $dbaccess;
 	public function __construct(){
 		require_once(__DIR__.'/dbconnection.php');
- 		global $db, $dbaccess;
- 		$db = new dbcon();
- 		$dbaccess= new dbaccess();
+ 		global $conn, $dbaccess;
+ 		$conn= new mysqli('localhost','aaa','a','iecse');
 	}
 
 	public function read_events($month){
+		global $conn;
 		$q="SELECT * FROM events WHERE month= $month";
-		$r1=mysqli_query($q);
+		$r1=mysqli_query($conn,$q);
 		if(mysqli_num_rows($r1)>=1){
 		$a=array();
-		$a[0]=array('status'=>'611')
+		$a[0]=array('status'=>'611');
 		$i=1;
 		while($q1_arr=mysqli_fetch_assoc($r1)){
-			$a[$i]=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
+			$a[$i]=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
 			$i++;
 		}
 		echo json_encode($a , JSON_FORCE_OBJECT);

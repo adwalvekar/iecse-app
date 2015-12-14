@@ -16,3 +16,4 @@
 <br> The app will respond in this format:
 <br>json containig status code at array location 0 and events at subsequent details.
 <br>event format:name,date,location,description,imgURL.
+<br>POST data to be sent is the month.
