@@ -17,8 +17,3 @@
 <br>json containig status code at array location 0 and events at subsequent details.
 <br>event format:name,date,location,description,imgURL.
 <br>POST data to be sent is the month.
-<br><h2>Status codes for upload</h2>
-<br>101   File not an image
-<br>102   File size more than 5mb
-<br>104   Error occured
-<br>111   Successful upload

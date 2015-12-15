@@ -6,7 +6,7 @@ class calendar{
 	public function __construct(){
 		require_once(__DIR__.'/dbconnection.php');
  		global $conn, $dbaccess;
- 		$conn= new mysqli('localhost','aaa','a','iecse');
+ 		$conn= new mysqli('localhost','iecse_app','sierrazulufoxtrotindia','iecseman_app');
 	}
 
 	public function read_events($month){
