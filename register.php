@@ -2,12 +2,13 @@
  require 'classes/register.php';
  $db=new DB;
  $db->connect();
+ $fullname=mysqli_real_escape_string($db->con,$_POST['name']);
  $username=mysqli_real_escape_string($db->con,$_POST['username']);
  $password=mysqli_real_escape_string($db->con,$_POST['password']);
  $email=mysqli_real_escape_string($db->con,$_POST['email']);
  $mobile=mysqli_real_escape_string($db->con,$_POST['mobile']);
- $regno=mysqli_real_escape_string($db->con,$_POST['regno']);
- $user=new Register($username,$password,$email,$mobile,$regno);
+ $regno=mysqli_real_escape_string($db->con,$_POST['registrationNumber']);
+ $user=new Register($fullname,$username,$password,$email,$mobile,$regno);
  if(!$user->validate())
  {
  	$send=array(
