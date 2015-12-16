@@ -2,9 +2,10 @@
 require 'db/init.php';
 class Register
 {
-	var $username,$password,$email,$mobile,$reg_no;
-	function __construct($u,$p,$e,$m,$r)
+	var $name,$username,$password,$email,$mobile,$reg_no;
+	function __construct($n,$u,$p,$e,$m,$r)
 	{
+		$this->name=$n;
 		$this->username=$u;
 		$this->password=md5($p);
 		$this->email=$e;
@@ -35,7 +36,7 @@ class Register
 	{
 		$db=new DB;
 		$db->connect();
-		$sql="insert into registered_users(Username,Password,Email,Mobile,RegNo) values('$this->username','$this->password','$this->email','$this->mobile','$this->reg_no')";
+		$sql="insert into registered_users(FullName,Username,Password,Email,Mobile,RegNo) values('$this->name','$this->username','$this->password','$this->email','$this->mobile','$this->reg_no')";
 		$db->query($sql);
 	}
 
