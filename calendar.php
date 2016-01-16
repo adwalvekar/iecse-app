@@ -17,11 +17,13 @@ class calendar{
 		$a=array();
 		$a[0]=array('status'=>'611');
 		$i=1;
+		echo '[';
 		while($q1_arr=mysqli_fetch_assoc($r1)){
-			$a[$i]=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
-			$i++;
+			$a=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
+			echo json_encode($a);
 		}
-		echo json_encode($a , JSON_FORCE_OBJECT);
+		echo ']';
+		
 	}
 	else echo json_encode(array('status'=>'604'));
 
