@@ -10,9 +10,9 @@ class calendar{
  		$conn= new mysqli('localhost','iecse_app','sierrazulufoxtrotindia','iecseman_app');
 	}
 
-	public function read_events($month){
+	public function read_events($dat,$month,$year){
 		global $conn;
-		$q="SELECT * FROM events WHERE month= $month";
+		$q="SELECT * FROM events WHERE month>=$month AND date>=$dat AND year>=$year";
 		$r1=mysqli_query($conn,$q);
 		if(mysqli_num_rows($r1)>=1){
 		echo '{';
@@ -22,7 +22,7 @@ class calendar{
 		$num=mysqli_num_rows($r1);
 		$i=0;
 		while($q1_arr=mysqli_fetch_assoc($r1)){
-			$a=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL']);
+			$a=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL'],'Type'=>$q1_arr['Type']);
 			echo json_encode($a);
 			if($num-$i!=1){
 				echo ',';
