@@ -3,19 +3,19 @@ require 'db/init.php';
 class Register
 {
 	var $name,$username,$password,$email,$mobile,$reg_no;
-	function __construct($n,$u,$p,$e,$m,$r)
+	function __construct($name,$username,$password,$email,$mobile,$registrationNumber)
 	{
-		$this->name=$n;
-		$this->username=$u;
-		$this->password=md5($p);
-		$this->email=$e;
-		$this->mobile=$m;
-		$this->reg_no=$r;
+		$this->name=$name;
+		$this->username=$username;
+		$this->password=md5($password);
+		$this->email=$email;
+		$this->mobile=$mobile;
+		$this->regNo=$registrationNumber;
 	}
-	function username_exists()
+	function usernameExists()
 	{
-		$db=new DB;
-		$db->connect();
+		$dbc=new DB;
+		$dbc->connect();
 		$sql="select * from registered_users where Username='$this->username'";
 		$db->query($sql);
 		$count=$db->count();
@@ -34,10 +34,10 @@ class Register
 	}
 	function insert()
 	{
-		$db=new DB;
-		$db->connect();
-		$sql="insert into registered_users(FullName,Username,Password,Email,Mobile,RegNo) values('$this->name','$this->username','$this->password','$this->email','$this->mobile','$this->reg_no')";
-		$db->query($sql);
+		$dbc=new DB;
+		$dbc->connect();
+		$sql="insert into registered_users(FullName,Username,Password,Email,Mobile,RegNo) values('$this->name','$this->username','$this->password','$this->email','$this->mobile','$this->regNo')";
+		$dbc->query($sql);
 	}
 
 }

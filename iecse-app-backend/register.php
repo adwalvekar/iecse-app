@@ -16,7 +16,7 @@
  	echo json_encode($send);
  	die();
  }
- if($user->username_exists())
+ if($user->usernameExists())
  {
  	$send=array(
  	"status"=>"103");//username already exists.
