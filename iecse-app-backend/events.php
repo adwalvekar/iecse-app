@@ -5,7 +5,7 @@ if(isset($_POST['month'])){
 	$dat=$_POST['date'];
 	$year=$_POST['year'];
 	$cal = new calendar();
-	$cal->read_events($dat,$month,$year);
+	$cal->readEvents($dat,$month,$year);
 }
  else {
  	echo json_encode(array('status'=>'602'));

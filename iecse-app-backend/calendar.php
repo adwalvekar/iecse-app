@@ -10,25 +10,25 @@ class calendar{
  		$conn= new mysqli('localhost','iecse_app','sierrazulufoxtrotindia','iecseman_app');
 	}
 
-	public function read_events($dat,$month,$year){
+	public function readEvents($dat,$month,$year){
 		global $conn;
-		$q="SELECT * FROM events WHERE month>=$month AND date>=$dat AND year>=$year";
-		$r1=mysqli_query($conn,$q);
-		if(mysqli_num_rows($r1)>=1){
+		$que="SELECT * FROM events WHERE month>=$month AND date>=$dat AND year>=$year";
+		$re1=mysqli_query($conn,$que);
+		if(mysqli_num_rows($re1)>=1){
 		echo '{';
 		echo '"status":"611",';
 		echo '"events":';
 		echo '[';
-		$num=mysqli_num_rows($r1);
-		$i=0;
-		while($q1_arr=mysqli_fetch_assoc($r1)){
-			$a=array('name'=>$q1_arr['name'],'date'=>$q1_arr['date'],'month'=>$q1_arr['month'],'year'=>$q1_arr['year'],'location'=>$q1_arr['location'],'description'=>$q1_arr['description'],'imageURL'=>$q1_arr['imgURL'],'Type'=>$q1_arr['Type']);
-			echo json_encode($a);
-			if($num-$i!=1){
+		$num=mysqli_num_rows($re1);
+		$count=0;
+		while($q1Arr=mysqli_fetch_assoc($re1)){
+			$arrFinal=array('name'=>$q1Arr['name'],'date'=>$q1Arr['date'],'month'=>$q1Arr['month'],'year'=>$q1Arr['year'],'location'=>$q1Arr['location'],'description'=>$q1Arr['description'],'imageURL'=>$q1Arr['imgURL'],'Type'=>$q1Arr['type']);
+			echo json_encode($arrFinal);
+			if($num-$count!=1){
 				echo ',';
 
 			}
-			$i++;
+			$count++;
 		}
 		echo ']';
 		echo'}';
