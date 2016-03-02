@@ -8,6 +8,8 @@
  $email=mysqli_real_escape_string($db->con,$_POST['email']);
  $mobile=mysqli_real_escape_string($db->con,$_POST['mobile']);
  $regno=mysqli_real_escape_string($db->con,$_POST['registrationNumber']);
+ if(isset($fullname) && isset($username) && isset($password) && isset($email) && isset($mobile) && isset($regno))
+ {
  $user=new Register($fullname,$username,$password,$email,$mobile,$regno);
  if(!$user->validate())
  {
@@ -29,5 +31,6 @@
  	$send=array(
  		"status"=>"111");
  	echo json_encode($send);
+ }
  }
 ?>
